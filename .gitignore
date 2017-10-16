@@ -1,0 +1,7 @@
+### JS ###
+# Node #
+node_modules/
+
+### PHP ###
+# Composer #
+vendor/

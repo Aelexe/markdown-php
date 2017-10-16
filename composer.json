@@ -1,0 +1,17 @@
+{
+  "name": "aelchemy/markdown-php",
+  "type": "library",
+  "description": "A library to convert markdown to HTML.",
+  "keywords": ["markdown"],
+  "authors": [{
+    "name": "Aelexe"
+  }],
+  "require-dev": {
+    "phpunit/phpunit": "6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Markdown\\": "src/"
+    }
+  }
+}

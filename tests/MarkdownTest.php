@@ -51,9 +51,11 @@ final class MarkdownTest extends TestCase
         $this->assertEquals('<img src="www.google.com/image.png" alt="Titled Image" title="The Title">', Markdown::parseMarkdown('![Titled Image](www.google.com/image.png "The Title")'));
     }
 
-    public function testQuotesCanbeParsed()
+    public function testBlockquotesCanBeParsed()
     {
         $this->assertEquals('<blockquote><p>This is a one line blockquote.</p></blockquote>', Markdown::parseMarkdown('> This is a one line blockquote.'));
-        $this->assertEquals('<blockquote><p>This is a multi<br>line blockquote.</p></blockquote>', Markdown::parseMarkdown("> This is a multi\nline blockquote."));
+        $this->assertEquals('<blockquote><p>This is a multi<br>line blockquote.</p></blockquote>', Markdown::parseMarkdown("> This is a multi\n> line blockquote."));
+        $this->assertEquals('<blockquote><p>This is two</p></blockquote><blockquote><p>separate blockquotes.</p></blockquote>', Markdown::parseMarkdown("> This is two\n\n> separate blockquotes."));
+        $this->assertEquals('<p>This is a paragraph, followed by blockquotes.</p><blockquote><p>This is two</p></blockquote><blockquote><p>separate blockquotes.</p></blockquote>', Markdown::parseMarkdown("This is a paragraph, followed by blockquotes.\n\n> This is two\n\n> separate blockquotes."));
     }
 }

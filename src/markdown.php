@@ -37,6 +37,7 @@ class Markdown
                     $line = '<h6>' . substr($line, 7) . '</h6>';
                 }
             } elseif (preg_match('/^!\\[.+\\]\\(.+\\)/', $line)) {
+                $line = trim($line);
                 $line = preg_replace('/^!(?<!\\\\)\\[(.+?)(?<!\\\\)\\](?<!\\\\)\\((\\S+?) "(.+?)"(?<!\\\\)\\)$/', '<img src="${2}" alt="${1}" title="${3}">', $line);
                 $line = preg_replace('/^!(?<!\\\\)\\[(.+?)(?<!\\\\)\\](?<!\\\\)\\((\\S+?)(?<!\\\\)\\)$/', '<img src="${2}" alt="${1}">', $line);
             } else {
@@ -46,7 +47,7 @@ class Markdown
                     $line = substr($line, 2);
                 }
 
-                if (!empty($line)) {
+                if (!trim($line) == '') {
                     // Parse line content.
                     if (!$paragraph) {
                         // If the line is the start of a paragraph, open it.
